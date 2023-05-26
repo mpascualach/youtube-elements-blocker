@@ -1,7 +1,8 @@
 const youtubeElementsToBlock = [
     '.ytp-endscreen-content', // might be worth it to replace the content in this class with something interactible? not sure what though...
     `[aria-label="${'Shorts'}"]`, // cause I hate youtube shorts
-    '.ytd-feed-filter-chip-bar-renderer' // don't tell me which categories are fit for me youtube
+    '.ytd-feed-filter-chip-bar-renderer', // don't tell me which categories are fit for me youtube
+    `[title="${'Shorts'}"]`
     // I'll be adding more classes to block here
 ];
 
