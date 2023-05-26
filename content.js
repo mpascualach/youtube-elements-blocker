@@ -17,8 +17,8 @@ const blockYoutubeElements = () => {
     youtubeElementsToBlock.forEach(selector => { // with reference to 'classes' to target
         const blockedElements = document.querySelectorAll(selector);
     
-        blockedElements.forEach(selector => {
-            selector.style.display = 'none'; // this is how you 'hide' an element from view while on a page
+        blockedElements.forEach(element => {
+            element.style.display = 'none'; // this is how you 'hide' an element from view while on a page
         })
     });
 
@@ -38,10 +38,43 @@ const blockYoutubeElements = () => {
             // console.log(elementsToDisable[i].style.display)
         }
     })
+
+    // blockElementsFromYoutubeIframe(); 
+    waitForIframeToLoad();
 }
 
-blockYoutubeElements();
+const waitForIframeToLoad = () => {
+    const iframeToTarget = document.querySelector('iframe[src^="https://www.redditmedia.com/mediaembed/"]');
+    if (iframeToTarget) {
+        const iframeDocument = iframeToTarget.contentDocument;
+        if (iframeDocument) {
+            const videoToTarget = iframeDocument.querySelector('#player');
+            console.log("Video target: ", videoToTarget);
+        }
+    } else {
+        setTimeout(waitForIframeToLoad, 1000);
+    }
+}
 
+// const blockElementsFromYoutubeIframe = () => {
+//     const iframeToYoutube = document.querySelector('iframe[src*="youtube.com"]');
+    
+//     console.log("Iframe?: ", iframeToYoutube);
+
+//     if (iframeToYoutube) {
+//         // console.log("Found iframe: ", iframeToYoutube);
+//         const iframeDoc = iframeToYoube.contentDocument || iframeToYoutube.contentWindow.document;
+//         const suggestedVideoWall = iframeDoc.querySelector('.ytp-endscreen-content');
+
+//         if (suggestedVideoWall) {
+//             suggestedVideoWall.style.display = 'none';
+//         }
+//     }
+// }
+
+
+
+blockYoutubeElements();
 // trigger blockYoutubeElements whenever there are changes in the DOM
 const observer = new MutationObserver(blockYoutubeElements);
 

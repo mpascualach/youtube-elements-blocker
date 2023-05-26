@@ -2,14 +2,14 @@
     "manifest_version": 2,
     "name": "Youtube Endscreen Content Blocker",
     "version": "1.0",
-    "description": "Blocks elements on Youtube",
+    "description": "Blocks Youtube elements",
     "permissions": [
-        "https://www.youtube.com/*"
+        "<all_urls>"
     ],
     "content_scripts": [
         {
-            "matches": ["https://www.youtube.com/*"],
-            "js": ["content.js"]
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
         }
     ]
 }
