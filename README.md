@@ -5,3 +5,5 @@ This is a Chrome extension I've developed that hides undesirable parts of Youtub
 In order to use it for yourself:
 1) Clone this repository with git clone [this repository]
 2) Turn on 'developer mode' on your chrome browser (or any other browser built on chromium, such as Brave)
+3) Upload this project as an extensoin for your browser using 'load unpacked'
+4) Enjoy!
