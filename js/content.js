@@ -39,38 +39,16 @@ const blockYoutubeElements = () => {
         }
     })
 
-    // blockElementsFromYoutubeIframe(); 
-    waitForIframeToLoad();
-}
+    const iframes = document.querySelectorAll('iframe');
 
-const waitForIframeToLoad = () => {
-    const iframeToTarget = document.querySelector('iframe[src^="https://www.redditmedia.com/mediaembed/"]');
-    if (iframeToTarget) {
-        const iframeDocument = iframeToTarget.contentDocument;
-        if (iframeDocument) {
-            const videoToTarget = iframeDocument.querySelector('#player');
-            console.log("Video target: ", videoToTarget);
+    for (let i = 0; i < iframes.length; i++) {
+        //check if the iframe's url is equal to youtube.com
+        if (iframes[i].src.includes('/embed/')) {
+            console.log(iframes[i].src);
+            iframes[i].setAttribute('style', 'display:block; background: black;');
         }
-    } else {
-        setTimeout(waitForIframeToLoad, 1000);
     }
 }
-
-// const blockElementsFromYoutubeIframe = () => {
-//     const iframeToYoutube = document.querySelector('iframe[src*="youtube.com"]');
-    
-//     console.log("Iframe?: ", iframeToYoutube);
-
-//     if (iframeToYoutube) {
-//         // console.log("Found iframe: ", iframeToYoutube);
-//         const iframeDoc = iframeToYoube.contentDocument || iframeToYoutube.contentWindow.document;
-//         const suggestedVideoWall = iframeDoc.querySelector('.ytp-endscreen-content');
-
-//         if (suggestedVideoWall) {
-//             suggestedVideoWall.style.display = 'none';
-//         }
-//     }
-// }
 
 
 
